@@ -1,16 +1,10 @@
 import React from "react";
 import RightSidebar from "../../components/layout/right-sidebar";
-import { Button, Div, H2, Image, Span } from "../../components/ui/html-tags";
-import {
-  BsBookmark,
-  BsChatLeft,
-  BsDot,
-  BsHeart,
-  BsShare,
-  BsThreeDots,
-} from "react-icons/bs";
-import { User } from "../../data/dummy";
-import { DiDotnet } from "react-icons/di";
+import { Div, H2 } from "../../components/ui/html-tags";
+import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import Post from "./components/post";
+import Story from "./components/story";
 
 const stories = [
   {
@@ -73,6 +67,9 @@ const posts = [
 ];
 
 export default function Home() {
+  const { user, loading } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
   return (
     <Div className={["w-full flex  overflow-y-auto"]}>
       <Main />
@@ -114,89 +111,6 @@ export function Posts({ posts }) {
         {posts?.map((post, index) => (
           <Post {...post} key={index} />
         ))}
-      </Div>
-    </Div>
-  );
-}
-
-function Story({ user_img, user_name, story_thumb }) {
-  return (
-    <Div
-      className={[
-        "relative",
-        "w-30 rounded-md overflow-hidden  shadow-md ",
-        "shrink-0",
-      ]}
-    >
-      <Div
-        className={[
-          "absolute bottom-0",
-          "size-full p-2",
-          "bg-gradient-to-b from-transparent to-black ",
-          "flex flex-col justify-between",
-        ]}
-      >
-        <Image
-          className={["rounded-full size-10 border-2"]}
-          src={user_img}
-          alt=""
-        />
-        <Span className={["font-semibold text-white"]}>{user_name}</Span>
-      </Div>
-
-      <Image src={story_thumb} alt="" />
-    </Div>
-  );
-}
-
-export function Post() {
-  return (
-    <Div
-      className={["max-w-full px-2 my-4 flex gap-2 border-b border-gray-600"]}
-    >
-      <Div className={[""]}>
-        <Image
-          className={["size-12 object-cover rounded-full"]}
-          src={User.image}
-          alt=""
-        />
-      </Div>
-      <Div className={["w-full"]}>
-        <Div className={["flex justify-between"]}>
-          <Div className={["flex items-center"]}>
-            <Span className={["font-semibold"]}>{User.name}</Span>
-            <Span className={["font-thin text-sm"]}>{User.username}</Span>
-            <BsDot />
-            <Span className={["font-thin text-sm"]}>{"2 jul"}</Span>
-          </Div>
-          <BsThreeDots />
-        </Div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam enim ad
-          repellat modi atque soluta minima voluptate eius, impedit ducimus,
-          molestiae pariatur placeat dolorum.
-        </p>
-        <Image className={["rounded-lg my-4"]} src={User.image} alt="" />
-        <Div className={["flex justify-between my-4"]}>
-          <Div className={["flex gap-2 items-center"]}>
-            {/* Like  */}
-            <Button
-              className={["flex items-center gap-1", "hover:text-red-500"]}
-            >
-              <BsHeart />
-              <Span>100</Span>
-            </Button>
-
-            <Button
-              className={["flex items-center gap-1", "hover:text-blue-500"]}
-            >
-              <BsChatLeft />
-              <Span>100</Span>
-            </Button>
-            <BsShare />
-          </Div>
-          <BsBookmark />
-        </Div>
       </Div>
     </Div>
   );

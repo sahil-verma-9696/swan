@@ -2,7 +2,7 @@ import React from "react";
 import RightSidebar from "../../components/layout/right-sidebar";
 import { Div, H2, Image, Section } from "../../components/ui/html-tags";
 import { User } from "../../data/dummy";
-import { Post, Posts } from "../home";
+import Post from "../home/components/post";
 const posts = [
   {
     user_img:
