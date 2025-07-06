@@ -60,3 +60,19 @@ export function H2({ className = [], children, ...props }) {
     </h2>
   );
 }
+
+/** @type {React.FC<React.SectionHTMLAttributes<HTMLSectionElement>>} */
+export function Section({ className = [], children, ...props }) {
+  return (
+    <section {...props} className={cn(...className)}>
+      {children}
+    </section>
+  );
+}
+
+/** @type {React.FC<React.PHTMLAttributes<HTMLParagraphElement>>} */
+export const P = ({ className = [], children, ...props }) => (
+  <p {...props} className={cn(...className)}>
+    {children}
+  </p>
+);

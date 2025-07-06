@@ -39,7 +39,7 @@ function Menu({ setShowMenu }) {
   return (
     <Div
       className={[
-        "border border-gray-400",
+        "border border-gray-600",
         "p-1 rounded-2xl",
         "absolute -top-2",
         "bg-white w-full",

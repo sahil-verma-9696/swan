@@ -1,19 +1,34 @@
 import React from "react";
 import { User } from "../../../data/dummy";
-import { Button, Div, H2, Image, Input, Span } from "../../ui/html-tags";
+import {
+  Button,
+  Div,
+  H2,
+  Image,
+  Input,
+  P,
+  Section,
+  Span,
+} from "../../ui/html-tags";
+import { useLocation } from "react-router";
 export default function RightSidebar() {
+  const location = useLocation();
+  console.log(location);
+
+  if (location.pathname == "/messages") return <Conversations />;
+
   return (
     <Div className={["w-[35vw] p-4"]}>
       <Div className={["w-[70%] mx-auto space-y-4"]}>
         <Input
-          className={["border border-gray-400", "p-2 rounded-lg", "w-full"]}
+          className={["border border-gray-600", "p-2 rounded-lg", "w-full"]}
           type="text"
           placeholder="Search on Swan"
         />
         <Div
           className={[
             "flex flex-col gap-2",
-            "border border-gray-400 rounded-lg p-2",
+            "border border-gray-600 rounded-lg p-2",
           ]}
         >
           <H2 className={["text-2xl font-semibold p-1"]}>Who to Follow</H2>
@@ -52,6 +67,39 @@ function UserComp({ user }) {
       >
         Follow
       </Button>
+    </Div>
+  );
+}
+
+export function DataNotFound({ heading, subheading, btnText }) {
+  return (
+    <Section className={["w-100 mx-auto my-4"]}>
+      <H2 className={["text-4xl font-semibold py-2"]}>{heading}</H2>
+      <P className={["py-4 text-gray-400"]}>{subheading}</P>
+      <Button
+        className={[
+          "px-5 py-3 bg-[#01b0e2] text-white rounded-3xl ",
+          "font-bold",
+        ]}
+      >
+        {btnText}
+      </Button>
+    </Section>
+  );
+}
+
+function Conversations() {
+  return (
+    <Div className={["w-[35vw]"]}>
+      <H2 className={["text-2xl font-semibold px-4 py-2"]}>Messages</H2>
+
+      <DataNotFound
+        heading={"Welcome to your inbox!"}
+        subheading={
+          "Drop a line, share posts and more with private conversations between you and others on Swan."
+        }
+        btnText={"Write a message"}
+      />
     </Div>
   );
 }

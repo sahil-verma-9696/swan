@@ -1,7 +1,14 @@
 import React from "react";
 import RightSidebar from "../../components/layout/right-sidebar";
-import { Div, H2, Image, Span } from "../../components/ui/html-tags";
-import { BsDot, BsThreeDots } from "react-icons/bs";
+import { Button, Div, H2, Image, Span } from "../../components/ui/html-tags";
+import {
+  BsBookmark,
+  BsChatLeft,
+  BsDot,
+  BsHeart,
+  BsShare,
+  BsThreeDots,
+} from "react-icons/bs";
 import { User } from "../../data/dummy";
 import { DiDotnet } from "react-icons/di";
 
@@ -77,7 +84,7 @@ export default function Home() {
 function Main() {
   return (
     <Div
-      className={["max-w-[35vw] h-fit border-r border-l border-gray-600 p-2"]}
+      className={["max-w-[40vw] h-fit border-r border-l border-gray-600 p-2"]}
     >
       <Stories stories={stories} />
       <Post />
@@ -99,7 +106,7 @@ function Stories({ stories }) {
   );
 }
 
-function Posts({ posts }) {
+export function Posts({ posts }) {
   return (
     <Div>
       <H2 className={["text-2xl font-semibold py-2"]}>Posts</H2>
@@ -142,9 +149,11 @@ function Story({ user_img, user_name, story_thumb }) {
   );
 }
 
-function Post() {
+export function Post() {
   return (
-    <Div className={["max-w-full px-2 my-2 flex gap-2"]}>
+    <Div
+      className={["max-w-full px-2 my-4 flex gap-2 border-b border-gray-600"]}
+    >
       <Div className={[""]}>
         <Image
           className={["size-12 object-cover rounded-full"]}
@@ -167,7 +176,27 @@ function Post() {
           repellat modi atque soluta minima voluptate eius, impedit ducimus,
           molestiae pariatur placeat dolorum.
         </p>
-        <Image className={["rounded-lg my-2"]} src={User.image} alt="" />
+        <Image className={["rounded-lg my-4"]} src={User.image} alt="" />
+        <Div className={["flex justify-between my-4"]}>
+          <Div className={["flex gap-2 items-center"]}>
+            {/* Like  */}
+            <Button
+              className={["flex items-center gap-1", "hover:text-red-500"]}
+            >
+              <BsHeart />
+              <Span>100</Span>
+            </Button>
+
+            <Button
+              className={["flex items-center gap-1", "hover:text-blue-500"]}
+            >
+              <BsChatLeft />
+              <Span>100</Span>
+            </Button>
+            <BsShare />
+          </Div>
+          <BsBookmark />
+        </Div>
       </Div>
     </Div>
   );
