@@ -5,7 +5,9 @@ import Notifications from "../pages/notifications";
 import Messages from "../pages/messages";
 import Profile from "../pages/profile";
 import LandingPage from "../pages/landing";
-import fetchInstance from "../utility/fetchInstance";
+import userAuth from "../utility/user-auth";
+import { store } from "../store/index";
+import AuthHOC from "../components/auth-hoc";
 
 export const router = createBrowserRouter([
   {
@@ -18,12 +20,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/home",
-        Component: Home,
-        loader: async (a, b) => {
-          // TODO : /me implmentation
-          // const data = await fetchInstance("/me");
-          // console.log(data);
-        },
+        Component: AuthHOC(Home),
       },
       {
         path: "notifications",

@@ -3,7 +3,11 @@ import { BsThreeDots } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
 import { Button, Div, Image, Span } from "../../../ui/html-tags";
 
-export default function User() {
+export default function User({
+  user_name = "John doe",
+  user_handle = "@johndoe",
+  user_profile = "https://images.unsplash.com/photo-1615322678402-04b477522be7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fG5hcnV0b3xlbnwwfHwwfHx8MA%3D%3D",
+}) {
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu((prev) => !prev);
   return (
@@ -18,24 +22,20 @@ export default function User() {
         ]}
       >
         <Span className={["size-14 rounded-full overflow-hidden shrink-0"]}>
-          <Image
-            className={["size-full"]}
-            src="https://images.unsplash.com/photo-1615322678402-04b477522be7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fG5hcnV0b3xlbnwwfHwwfHx8MA%3D%3D"
-            alt=""
-          />
+          <Image className={["size-full"]} src={user_profile} alt="" />
         </Span>
         <Span className={["flex flex-col shrink-0 flex-1"]}>
-          <Span className={["font-semibold"]}>Sekh Sahb</Span>
-          <Span className={["text-xs"]}>@Sekh Sahb</Span>
+          <Span className={["font-semibold"]}>{user_name}</Span>
+          <Span className={["text-xs"]}>{user_handle}</Span>
         </Span>
         <BsThreeDots />
       </Button>
-      {showMenu && <Menu setShowMenu={setShowMenu} />}
+      {showMenu && <LogoutMenu setShowMenu={setShowMenu} />}
     </Div>
   );
 }
 
-function Menu({ setShowMenu }) {  
+function LogoutMenu({ setShowMenu }) {
   return (
     <Div
       className={[

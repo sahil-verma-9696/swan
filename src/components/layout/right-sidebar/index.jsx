@@ -10,12 +10,7 @@ import {
   Section,
   Span,
 } from "../../ui/html-tags";
-import { useLocation } from "react-router";
 export default function RightSidebar() {
-  const location = useLocation();
-  console.log(location);
-
-  if (location.pathname == "/messages") return <Conversations />;
 
   return (
     <Div className={["w-[35vw] p-4"]}>
@@ -88,7 +83,7 @@ export function DataNotFound({ heading, subheading, btnText }) {
   );
 }
 
-function Conversations() {
+export function Conversations() {
   return (
     <Div className={["w-[35vw]"]}>
       <H2 className={["text-2xl font-semibold px-4 py-2"]}>Messages</H2>

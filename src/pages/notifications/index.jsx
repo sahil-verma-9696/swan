@@ -6,7 +6,6 @@ export default function Notifications() {
   return (
     <Div className={["w-full flex overflow-y-auto"]}>
       <Main />
-      <RightSidebar />
     </Div>
   );
 }

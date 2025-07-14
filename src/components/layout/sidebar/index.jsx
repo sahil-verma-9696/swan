@@ -1,12 +1,18 @@
 import React from "react";
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router-dom"; // ✅
 import User from "./components/User";
 import NavItems from "./components/NavItems";
 import { Button, Div, Navigations } from "../../ui/html-tags";
 import CreatePost from "../../create-post";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 export default function Sidebar() {
+  console.log("Sidebar re-rendered");
   const [showCreatePost, setShowCreatePost] = React.useState(false);
+  const user = {
+    name: "John Doe",
+  };
 
   const location = useLocation();
   if (location.pathname === "/") return null;
@@ -40,7 +46,7 @@ export default function Sidebar() {
             Post
           </Button>
         </Div>
-        <User />
+        <User {...user} />
       </Div>
       {showCreatePost && <CreatePost close={handleCloseCreatePost} />}
     </aside>

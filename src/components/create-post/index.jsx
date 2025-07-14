@@ -68,7 +68,11 @@ export default function CreatePost({ close }) {
         </Div>
 
         {/* File Upload and Post Button */}
-        <Div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <Div
+          className={[
+            "flex flex-col sm:flex-row justify-between items-center gap-4",
+          ]}
+        >
           <Input
             type="file"
             accept="image/jpeg, image/png"

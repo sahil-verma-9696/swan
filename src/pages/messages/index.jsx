@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import RightSidebar, {
+  Conversations,
   DataNotFound,
 } from "../../components/layout/right-sidebar";
 import { Div, H2 } from "../../components/ui/html-tags";
@@ -7,8 +8,17 @@ import Header from "./components/header";
 import UserBanner from "./components/user-banner";
 import ChatArea from "./components/chat-area";
 import InputArea from "./components/input-area";
+import { useDispatch } from "react-redux";
+import { setRightSidePannel } from "../../store/appSlice";
 
 export default function Messages() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setRightSidePannel("messages"));
+    return () => {
+      dispatch(setRightSidePannel("all"));
+    };
+  });
   return (
     <Div className={["w-full flex overflow-y-auto"]}>
       <Div
@@ -21,11 +31,10 @@ export default function Messages() {
         <Header />
         <div className="flex-1 overflow-y-auto">
           <UserBanner />
-          <ChatArea />
+          {/* <ChatArea /> */}
         </div>
         <InputArea />
       </Div>
-      <RightSidebar />
     </Div>
   );
 }

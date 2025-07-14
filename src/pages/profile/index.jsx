@@ -29,7 +29,6 @@ export default function Profile() {
   return (
     <Div className={["w-full flex overflow-y-auto"]}>
       <Main />
-      <RightSidebar />
     </Div>
   );
 }
@@ -38,22 +37,21 @@ function Main() {
     <Div className={["w-[40vw] h-fit border-r border-l border-gray-600"]}>
       <H2 className={["text-2xl font-semibold p-2"]}>Profile</H2>
       <Section>
-        <Div className={["bg-purple-400 h-60", "relative"]}>
-          <Div
-            className={[
-              "bg-white rounded-full p-1",
-              "absolute bottom-0 translate-y-1/2",
-              "mx-4",
-              "dark:bg-[#0f0f0f]",
-            ]}
-          >
-            <Image
-              src={User.image}
-              className={["size-32 rounded-full object-cover"]}
-            />
-          </Div>
+        <Div className={["bg-purple-400 h-60", ""]}></Div>
+        <Div
+          className={[
+            "bg-white rounded-full p-1",
+            "relative top-[50%]",
+            "mx-4",
+            "dark:bg-[#0f0f0f]",
+          ]}
+        >
+          <Image
+            src={User.image}
+            className={["size-32 rounded-full object-cover"]}
+          />
         </Div>
-        <H2 className={["text-2xl font-semibold px-4 pt-18"]}>{User.name}</H2>
+        <H2 className={["text-2xl font-semibold px-4 "]}>{User.name}</H2>
         <H2 className={[" px-4 text-gray-400"]}>{User.username}</H2>
         <Post />
         <Post />

@@ -1,10 +1,17 @@
 import React from "react";
 import RightSidebar from "../../components/layout/right-sidebar";
 import { Div, H2 } from "../../components/ui/html-tags";
-import { useNavigate } from "react-router";
+import {
+  Await,
+  NavLink,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "react-router";
 import { useSelector } from "react-redux";
 import Post from "./components/post";
 import Story from "./components/story";
+import { Image, ImageKitProvider } from "@imagekit/react";
 
 const stories = [
   {
@@ -67,13 +74,20 @@ const posts = [
 ];
 
 export default function Home() {
+  console.log("Home re-rendered");
   const { user, loading } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+  // console.log(user);
 
   return (
-    <Div className={["w-full flex  overflow-y-auto"]}>
+    <Div className={["w-full flex overflow-y-auto"]}>
+      {/* Show loading if route is changing */}
+
+      {/* <React.Suspense fallback={<div>Loading...</div>}>
+        <Await resolve={nonCriticalData}>
+          {(value) => <h3>Non critical value: {value}</h3>}
+        </Await>
+      </React.Suspense> */}
       <Main />
-      <RightSidebar />
     </Div>
   );
 }
@@ -99,6 +113,18 @@ function Stories({ stories }) {
           <Story {...story} key={index} />
         ))}
       </Div>
+      <ImageKitProvider
+        urlEndpoint={`https://ik.imagekit.io/${
+          import.meta.env.VITE_IMAGEKIT_ID
+        }`}
+      >
+        <Image
+          src="/default-image.jpg"
+          width={500}
+          height={500}
+          alt="Picture of the author"
+        />
+      </ImageKitProvider>
     </Div>
   );
 }
