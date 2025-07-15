@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink } from "react-router-dom";
 import { navConfig } from "../config";
 import cn from "../../../../utility/cn";
 import { Span } from "../../../ui/html-tags";

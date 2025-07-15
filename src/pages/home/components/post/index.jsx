@@ -20,11 +20,11 @@ export default function Post() {
     <Div
       className={["max-w-full px-2 my-4 flex gap-2 border-b border-gray-600"]}
     >
-      <Div className={[""]}>
+      <Div>
         <Image
           className={["size-12 object-cover rounded-full"]}
           src={User.image}
-          alt=""
+          alt="image not round"
         />
       </Div>
       <Div className={["w-full"]}>

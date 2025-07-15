@@ -27,22 +27,18 @@ const posts = [
 
 export default function Profile() {
   return (
-    <Div className={["w-full flex overflow-y-auto"]}>
-      <Main />
-    </Div>
-  );
-}
-function Main() {
-  return (
-    <Div className={["w-[40vw] h-fit border-r border-l border-gray-600"]}>
+    <Div
+      className={[
+        "flex-2 flex flex-col overflow-y-auto border-r border-l border-gray-600",
+      ]}
+    >
       <H2 className={["text-2xl font-semibold p-2"]}>Profile</H2>
       <Section>
-        <Div className={["bg-purple-400 h-60", ""]}></Div>
+        <Div className={["bg-purple-400 h-60"]}></Div>
         <Div
           className={[
             "bg-white rounded-full p-1",
-            "relative top-[50%]",
-            "mx-4",
+            "mx-4 w-fit",
             "dark:bg-[#0f0f0f]",
           ]}
         >

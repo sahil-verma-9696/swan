@@ -1,31 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom"; // ✅
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import User from "./components/User";
 import NavItems from "./components/NavItems";
 import { Button, Div, Navigations } from "../../ui/html-tags";
 import CreatePost from "../../create-post";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 
-export default function Sidebar() {
+export default React.memo(function Sidebar() {
   console.log("Sidebar re-rendered");
   const [showCreatePost, setShowCreatePost] = React.useState(false);
-  const user = {
-    name: "John Doe",
-  };
-
-  const location = useLocation();
-  if (location.pathname === "/") return null;
+  const { user } = useSelector((state) => state.auth);
 
   function handleShowCreatePost() {
     setShowCreatePost(true);
-  }
+  } 
   function handleCloseCreatePost() {
     setShowCreatePost(false);
   }
 
   return (
-    <aside className={["w-[25vw] shrink-0 flex justify-end p-2 "]}>
+    <aside className={["flex-1 flex justify-end p-2 "]}>
       <Div className={["flex flex-col gap-4 py-2"]}>
         <Link to="/home">
           <img className="size-18" src="./swan-logo.png" alt="" />
@@ -51,4 +46,4 @@ export default function Sidebar() {
       {showCreatePost && <CreatePost close={handleCloseCreatePost} />}
     </aside>
   );
-}
+});

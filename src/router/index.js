@@ -1,38 +1,36 @@
-import { createBrowserRouter } from "react-router";
-import HomeLayout from "../components/layout/private";
+import { createBrowserRouter } from "react-router-dom";
+import HomeLayout from "../components/layout/private"; // Layout with Sidebar
 import Home from "../pages/home";
 import Notifications from "../pages/notifications";
 import Messages from "../pages/messages";
 import Profile from "../pages/profile";
 import LandingPage from "../pages/landing";
-import userAuth from "../utility/user-auth";
-import { store } from "../store/index";
 import AuthHOC from "../components/auth-hoc";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    Component: LandingPage,
+  },
+  {
+    path: "/",
     Component: HomeLayout,
     children: [
       {
-        index: true,
-        Component: LandingPage,
-      },
-      {
-        path: "/home",
+        path: "home",
         Component: AuthHOC(Home),
       },
       {
         path: "notifications",
-        Component: Notifications,
+        Component: AuthHOC(Notifications),
       },
       {
         path: "messages",
-        Component: Messages,
+        Component: AuthHOC(Messages),
       },
       {
         path: "profile",
-        Component: Profile,
+        Component: AuthHOC(Profile),
       },
     ],
   },

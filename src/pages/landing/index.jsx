@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import {
   Button,
   Div,
@@ -12,6 +13,7 @@ export default function LandingPage() {
   const { handleGoogleAuth } = useIndex();
   return (
     <Section className={["flex overflow-auto w-full"]}>
+      <Toaster position="top-center" reverseOrder={false} />
       <Div className={["flex-1 flex justify-center items-center"]}>
         <Image
           className={["w-100 object-cover shadow-md rounded-full"]}
