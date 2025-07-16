@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setRightSidePannel } from "../../store/appSlice";
 
 export default function Messages() {
+  console.log("Messages re-rendered");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setRightSidePannel("messages"));

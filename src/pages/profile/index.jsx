@@ -26,6 +26,7 @@ const posts = [
 ];
 
 export default function Profile() {
+  console.log("Profile re-rendered"); 
   return (
     <Div
       className={[

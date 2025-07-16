@@ -10,7 +10,6 @@ import CreatePost from "../../create-post";
 export default React.memo(function Sidebar() {
   console.log("Sidebar re-rendered");
   const [showCreatePost, setShowCreatePost] = React.useState(false);
-  const { user } = useSelector((state) => state.auth);
 
   function handleShowCreatePost() {
     setShowCreatePost(true);
@@ -41,7 +40,7 @@ export default React.memo(function Sidebar() {
             Post
           </Button>
         </Div>
-        <User {...user} />
+        <User  />
       </Div>
       {showCreatePost && <CreatePost close={handleCloseCreatePost} />}
     </aside>

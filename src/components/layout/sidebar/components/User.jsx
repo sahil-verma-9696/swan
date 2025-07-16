@@ -2,12 +2,12 @@ import React from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { BiLogOut } from "react-icons/bi";
 import { Button, Div, Image, Span } from "../../../ui/html-tags";
+import { useSelector } from "react-redux";
 
-export default function User({
-  user_name = "John doe",
-  user_handle = "@johndoe",
-  user_profile = "https://images.unsplash.com/photo-1615322678402-04b477522be7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fG5hcnV0b3xlbnwwfHwwfHx8MA%3D%3D",
-}) {
+export default function User() {
+  const { user_name, user_handle, user_profile } = useSelector(
+    (state) => state.auth.user
+  );
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu((prev) => !prev);
   return (

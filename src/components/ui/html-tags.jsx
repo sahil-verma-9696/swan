@@ -2,8 +2,17 @@ import React from "react";
 import cn from "../../utility/cn";
 
 /** @type {React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>>} */
-export const Button = ({ className = [], children, ...props }) => (
-  <button {...props} className={cn(...className, "cursor-pointer")}>
+export const Button = ({
+  type = "button",
+  className = [],
+  children,
+  ...props
+}) => (
+  <button
+    type={type}
+    {...props}
+    className={cn(...className, "cursor-pointer border p-2 rounded-md")}
+  >
     {children}
   </button>
 );
@@ -24,7 +33,14 @@ export const Div = ({ className = [], children, ...props }) => (
 
 /** @type {React.FC<React.InputHTMLAttributes<HTMLInputElement>>} */
 export const Input = ({ className = [], children, ...props }) => (
-  <input {...props} className={cn(...className)}>
+  <input
+    {...props}
+    className={cn(
+      ...className,
+      "border p-1 rounded-md px-2",
+      "dark:border-gray-600"
+    )}
+  >
     {children}
   </input>
 );

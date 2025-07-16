@@ -2,9 +2,11 @@ import { useGoogleLogin } from "@react-oauth/google";
 import fetchInstance from "../../utility/fetchInstance";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 export default function useIndex() {
   const navigate = useNavigate();
+  const [showFormModel, setShowFormModel] = useState(false);
 
   async function handleLogin(authResult) {
     const myLoggingToast = toast("Logging in...");
@@ -22,7 +24,7 @@ export default function useIndex() {
 
   async function handleError(err) {
     console.log(err);
-    toast.error(err.message);   
+    toast.error(err.message);
   }
 
   const handleGoogleAuth = useGoogleLogin({
@@ -31,5 +33,5 @@ export default function useIndex() {
     flow: "auth-code",
   });
 
-  return { handleGoogleAuth };
+  return { handleGoogleAuth, showFormModel, setShowFormModel };
 }

@@ -3,7 +3,7 @@ import Story from "../story";
 
 export default function StroyGroup ({ stories }) {
   return (
-    <Div>
+    <div className="px-4">
       <H2 className={["text-2xl font-semibold py-2"]}>Stories</H2>
       <Div className={["flex gap-2 items-center overflow-x-auto"]}>
         {stories?.map((story, index) => (
@@ -11,6 +11,6 @@ export default function StroyGroup ({ stories }) {
         ))}
       </Div>
 
-    </Div>
+    </div>
   );
 }
