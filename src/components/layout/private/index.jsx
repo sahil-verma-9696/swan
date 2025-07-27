@@ -19,7 +19,9 @@ export default function HomeLayout() {
       <Toaster position="top-center" reverseOrder={false} />
       <Sidebar />
       <Outlet />
-      <RightSidePannel />
+      <div className="max-sm:hidden">
+        <RightSidePannel />
+      </div>
     </main>
   );
 }

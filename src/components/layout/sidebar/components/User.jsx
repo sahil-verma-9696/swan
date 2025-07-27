@@ -11,7 +11,7 @@ export default function User() {
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => setShowMenu((prev) => !prev);
   return (
-    <Div className={["relative"]}>
+    <Div className={["relative","max-sm:hidden"]}>
       <Button
         onClick={toggleMenu}
         className={[

@@ -13,12 +13,13 @@ export default function NavItems() {
           "text-2xl hover:bg-gray-200 px-4 py-2 rounded-2xl",
           "flex items-center gap-2",
           "dark:hover:bg-gray-800",
-          isActive && "bg-gray-300 dark:bg-gray-700"
+          isActive && "bg-gray-300 dark:bg-gray-700",
+          "max-sm:flex-col"
         )
       }
     >
       <Icon />
-      <Span>{label}</Span>
+      <Span className={["max-sm:text-xs"]}>{label}</Span>
     </NavLink>
   ));
 }
