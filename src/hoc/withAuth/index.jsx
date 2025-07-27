@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-import { me } from "./../../store/authSlice";
+import { me } from "../../store/authSlice";
 
 export default function AuthHOC(WrappedComponent) {
   return function WithAuth(props) {

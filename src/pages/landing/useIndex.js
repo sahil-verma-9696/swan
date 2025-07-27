@@ -9,16 +9,26 @@ export default function useIndex() {
   const [showFormModel, setShowFormModel] = useState(false);
 
   async function handleLogin(authResult) {
-    const myLoggingToast = toast("Logging in...");
-    const res = await fetchInstance("/auth/google", {
-      method: "POST",
-      body: JSON.stringify({ code: authResult.code }),
-    });
-    toast.dismiss(myLoggingToast);
+    const myLoggingToast = toast.loading("Logging in...");
+    console.log(authResult)
+    try {
+      const res = await fetchInstance("/auth/google", {
+        method: "POST",
+        body: JSON.stringify({ code: authResult.code }),
+      });
 
-    // TODO: res.status == success
-    if (res.message === "cookie set successfully") {
-      navigate("/home");
+      toast.dismiss(myLoggingToast);
+
+      if (res.message === "cookie set successfully") {
+        toast.success("Login successful!");
+        navigate("/home");
+      } else {
+        toast.error("Login failed");
+      }
+    } catch (err) {
+      toast.dismiss(myLoggingToast);
+      toast.error("Something went wrong during login.");
+      console.error(err);
     }
   }
 

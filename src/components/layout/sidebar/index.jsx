@@ -6,17 +6,10 @@ import User from "./components/User";
 import NavItems from "./components/NavItems";
 import { Button, Div, Navigations } from "../../ui/html-tags";
 import CreatePost from "../../create-post";
+import CreatePostBtn from "../../create-post/create-post-btn";
 
 export default React.memo(function Sidebar() {
   console.log("Sidebar re-rendered");
-  const [showCreatePost, setShowCreatePost] = React.useState(false);
-
-  function handleShowCreatePost() {
-    setShowCreatePost(true);
-  } 
-  function handleCloseCreatePost() {
-    setShowCreatePost(false);
-  }
 
   return (
     <aside className={["flex-1 flex justify-end p-2 "]}>
@@ -28,21 +21,10 @@ export default React.memo(function Sidebar() {
           <Navigations>
             <NavItems />
           </Navigations>
-          <Button
-            onClick={handleShowCreatePost}
-            className={[
-              "w-full px-4 py-1 rounded-2xl cursor-pointer",
-              "bg-[#01b0e2] hover:bg-[#78d4ed]",
-              "flex items-center gap-2 justify-center",
-              "text-white font-semibold text-2xl",
-            ]}
-          >
-            Post
-          </Button>
+          <CreatePostBtn />
         </Div>
-        <User  />
+        <User />
       </Div>
-      {showCreatePost && <CreatePost close={handleCloseCreatePost} />}
     </aside>
   );
 });

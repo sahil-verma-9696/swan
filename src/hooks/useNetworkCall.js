@@ -15,6 +15,4 @@ export default async function useNetworkCall(url, options = {}) {
   const isFetching = false;
 
   const fetchedData = await fetchInstance(url, options);
-
-
 }

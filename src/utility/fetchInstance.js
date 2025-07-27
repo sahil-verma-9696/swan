@@ -20,6 +20,8 @@ export default async function fetchInstance(url, options = {}) {
     },
   });
 
+  console.log(res)
+
   if (!res.ok) throw new Error(res.statusText);
   const data = await res.json();
   return data;

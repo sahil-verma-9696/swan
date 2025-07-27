@@ -5,7 +5,7 @@ import Notifications from "../pages/notifications";
 import Messages from "../pages/messages";
 import Profile from "../pages/profile";
 import LandingPage from "../pages/landing";
-import AuthHOC from "../components/auth-hoc";
+import withAuth from "../hoc/withAuth";
 
 export const router = createBrowserRouter([
   {
@@ -18,19 +18,19 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "home",
-        Component: AuthHOC(Home),
+        Component: withAuth(Home),
       },
       {
         path: "notifications",
-        Component: AuthHOC(Notifications),
+        Component: withAuth(Notifications),
       },
       {
         path: "messages",
-        Component: AuthHOC(Messages),
+        Component: withAuth(Messages),
       },
       {
         path: "profile",
-        Component: AuthHOC(Profile),
+        Component: withAuth(Profile),
       },
     ],
   },
